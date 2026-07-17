@@ -1,0 +1,15 @@
+venv/
+
+__pycache__/
+*.pyc
+
+.env
+
+storage/videos/*
+storage/audio/*
+storage/transcripts/*
+
+.idea/
+.vscode/
+
+.DS_Store
