@@ -1,0 +1,426 @@
+/* ---------- Global ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+#root {
+    width: 100%;
+}
+
+/* ---------- Navbar ---------- */
+
+.navbar {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 45px 20px;
+    text-align: center;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+}
+
+.navbar h1 {
+    font-size: 2.7rem;
+    margin-bottom: 10px;
+}
+
+.navbar p {
+    font-size: 1.05rem;
+    opacity: .95;
+}
+
+/* ---------- Video Input ---------- */
+
+.video-input {
+    width: min(900px,90%);
+    margin: 40px auto;
+    display: flex;
+    gap: 15px;
+}
+
+.video-input input {
+
+    flex: 1;
+
+    padding: 16px 20px;
+
+    border-radius: 12px;
+
+    border: 1px solid #d1d5db;
+
+    outline: none;
+
+    font-size: 16px;
+
+    transition: .25s;
+}
+
+.video-input input:focus {
+
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 4px rgba(37,99,235,.15);
+
+}
+
+.video-input button {
+
+    border: none;
+
+    cursor: pointer;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 0 30px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    transition: .25s;
+
+}
+
+.video-input button:hover {
+
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+
+}
+
+/* ---------- Progress ---------- */
+
+.progress {
+
+    width: min(900px,90%);
+
+    margin: 25px auto;
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.spinner {
+
+    width: 28px;
+
+    height: 28px;
+
+    border: 4px solid #dbeafe;
+
+    border-top: 4px solid #2563eb;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+
+}
+
+@keyframes spin {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+/* ---------- Blog ---------- */
+
+.blog {
+
+    width: min(950px,90%);
+
+    margin: 40px auto;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 45px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.blog h1 {
+
+    font-size: 2.3rem;
+
+    color: #1e3a8a;
+
+    margin-bottom: 25px;
+
+}
+
+.blog h2 {
+
+    margin-top: 35px;
+
+    color: #1d4ed8;
+
+}
+
+.blog h3 {
+
+    margin-top: 25px;
+
+}
+
+.blog p {
+
+    line-height: 1.8;
+
+    margin: 18px 0;
+
+    color: #374151;
+
+}
+
+.blog ul {
+
+    margin-left: 25px;
+
+    line-height: 1.8;
+
+}
+
+/* ---------- Gallery ---------- */
+
+.gallery {
+
+    width: min(1000px,92%);
+
+    margin: 45px auto;
+
+}
+
+.gallery h2 {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    color: #1e3a8a;
+
+}
+
+.gallery-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+
+    gap: 20px;
+
+}
+
+.gallery-grid img {
+
+    width: 100%;
+
+    border-radius: 15px;
+
+    object-fit: cover;
+
+    transition: .3s;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 18px rgba(0,0,0,.12);
+
+}
+
+.gallery-grid img:hover {
+
+    transform: scale(1.04);
+
+}
+
+/* ---------- Download ---------- */
+
+.download {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin: 35px 0;
+
+}
+
+.download button {
+
+    background: #10b981;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 15px 30px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: .3s;
+
+}
+
+.download button:hover {
+
+    background: #059669;
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:768px){
+
+.video-input{
+
+    flex-direction:column;
+
+}
+
+.video-input button{
+
+    height:55px;
+
+}
+
+.navbar h1{
+
+    font-size:2rem;
+
+}
+
+.blog{
+
+    padding:25px;
+
+}
+
+}
+/* ---------- Pipeline ---------- */
+
+.progress-card{
+
+    width:min(900px,90%);
+
+    margin:30px auto;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.progress-card h2{
+
+    margin-bottom:20px;
+
+    color:#1e3a8a;
+
+}
+
+.progress-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:12px 0;
+
+    font-size:18px;
+
+}
+
+.progress-icon{
+
+    width:35px;
+
+    text-align:center;
+
+}
+/* ---------- Hero Image ---------- */
+
+.hero-image{
+
+    width:min(950px,90%);
+
+    margin:40px auto;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    height:450px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+
+}
+.blog h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    color: #1e3a8a;
+}
+
+.blog h2 {
+    margin-top: 35px;
+    margin-bottom: 15px;
+    color: #2563eb;
+}
+
+.blog p {
+    text-align: justify;
+    line-height: 1.8;
+    font-size: 18px;
+}
