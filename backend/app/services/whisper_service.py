@@ -7,7 +7,7 @@ TRANSCRIPT_DIR.mkdir(parents=True, exist_ok=True)
 
 class WhisperService:
 
-    model = whisper.load_model("base")
+    model = whisper.load_model("tiny")
 
     @staticmethod
     def transcribe(audio_path: str):
