@@ -1,5 +1,10 @@
+import os
 from pathlib import Path
-import whisper
+
+from groq import Groq
+from dotenv import load_dotenv
+
+load_dotenv()
 
 TRANSCRIPT_DIR = Path("storage/transcripts")
 TRANSCRIPT_DIR.mkdir(parents=True, exist_ok=True)
@@ -7,18 +12,28 @@ TRANSCRIPT_DIR.mkdir(parents=True, exist_ok=True)
 
 class WhisperService:
 
-    model = whisper.load_model("tiny")
+    client = Groq(
+        api_key=os.getenv("GROQ_API_KEY")
+    )
 
     @staticmethod
     def transcribe(audio_path: str):
 
-        result = WhisperService.model.transcribe(audio_path)
+        audio_path = Path(audio_path)
 
-        transcript = result["text"].strip()
+        with open(audio_path, "rb") as file:
+
+            transcription = WhisperService.client.audio.transcriptions.create(
+                file=(audio_path.name, file.read()),
+                model="whisper-large-v3-turbo",
+                response_format="json"
+            )
+
+        transcript = transcription.text.strip()
 
         transcript_path = (
             TRANSCRIPT_DIR /
-            f"{Path(audio_path).stem}.txt"
+            f"{audio_path.stem}.txt"
         )
 
         transcript_path.write_text(
