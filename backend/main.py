@@ -11,18 +11,23 @@ app = FastAPI(
 )
 
 # Allow frontend (React/Vite) to access the backend
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.api.routes import router
+
+app = FastAPI()
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
+        "https://video-to-blog-1.onrender.com"
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Include API routes
 app.include_router(router)
 
 # Serve static files (images, blogs, videos, transcripts, etc.)
