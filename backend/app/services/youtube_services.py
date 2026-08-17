@@ -16,15 +16,31 @@ class YoutubeService:
             "outtmpl": str(VIDEO_DIR / "%(id)s.%(ext)s"),
             "noplaylist": True,
             "quiet": False,
+
+            "extractor_args": {
+                "youtube": {
+                    "player_client": ["tv_embedded"]
+                }
+            }
         }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(url, download=True)
-            file_path = Path(ydl.prepare_filename(info))
 
-            # If the merge created an MP4, adjust the returned path
+            info = ydl.extract_info(
+                url,
+                download=True
+            )
+
+            file_path = Path(
+                ydl.prepare_filename(info)
+            )
+
+            # yt-dlp may return a .webm/.mkv path
+            # even though the final merged file is MP4
             if file_path.suffix != ".mp4":
+
                 mp4_path = file_path.with_suffix(".mp4")
+
                 if mp4_path.exists():
                     file_path = mp4_path
 
